@@ -1,0 +1,4 @@
+/etc/quagga true quagga 0606 0707
+/var/run true quagga 0600 0700
+/var/run/quagga true quagga 0600 0700
+/var/log/quagga true quagga 0600 0700

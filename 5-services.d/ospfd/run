@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+/usr/sbin/ospfd --config_file=/etc/quagga/ospfd.conf --pid_file=/var/run/quagga/ospfd.pid

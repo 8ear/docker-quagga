@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+/usr/sbin/ospf6d --config_file=/etc/quagga/ospf6d.conf --pid_file=/var/run/quagga/ospf6d.pid

@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+/usr/sbin/bgpd --config_file=/etc/quagga/bgpd.conf --pid_file=/var/run/quagga/bgpd.pid

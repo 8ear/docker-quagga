@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+/usr/sbin/zebra  --config_file=/etc/quagga/zebra.conf --pid_file=/var/run/quagga/zebra.pid
