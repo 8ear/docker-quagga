@@ -8,6 +8,7 @@ addons:
 env:
   global:
   - ADD_TAG=""
+  - TAG=latest
 
 before_install:
 # Pull Kaniko Image
@@ -24,17 +25,23 @@ install:
 
 script:
 # Build Image via kaniko
-- docker run
-    -v "$TRAVIS_BUILD_DIR/$FOLDER":/workspace
-    -v $HOME/.docker:/kaniko/.docker
-  gcr.io/kaniko-project/executor:latest
-    --context=/workspace
-    --build-arg VCS_REF=$TRAVIS_COMMIT
-    --build-arg VERSION=$VERSION
-    --build-arg GIT_REPO=https://github.com/$TRAVIS_REPO_SLUG
-    --build-arg BUILD_DATE=$(date -u +"%Y-%m-%d")
-    --verbosity=info
-    --destination=$DOCKER_SLUG/quagga:$TAG
+# - docker run
+#     -v "$TRAVIS_BUILD_DIR/$FOLDER":/workspace
+#     -v $HOME/.docker:/kaniko/.docker
+#   gcr.io/kaniko-project/executor:latest
+#     --context=/workspace
+#     --build-arg VCS_REF=$TRAVIS_COMMIT
+#     --build-arg VERSION=$VERSION
+#     --build-arg GIT_REPO=https://github.com/$TRAVIS_REPO_SLUG
+#     --build-arg BUILD_DATE=$(date -u +"%Y-%m-%d")
+#     --verbosity=info
+#     --destination=$DOCKER_SLUG/quagga:$TAG
+- docker build -t $DOCKER_SLUG/quagga:$TAG \
+      --build-arg VCS_REF=$TRAVIS_COMMIT \
+      --build-arg GIT_REPO=https://github.com/$TRAVIS_REPO_SLUG \
+      --build-arg BUILD_DATE=$(date -u +"%Y-%m-%d") \
+      .
+
 
 # Retag images for other tags
 - for i in $ADD_TAG;
