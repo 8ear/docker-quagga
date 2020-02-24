@@ -18,8 +18,8 @@ RUN set -eu \
     
 RUN set -eu \    
     ## Directories
-    ;mkdir /var/run/quagga \
-    ;mkdir /var/log/quagga \
+    ;mkdir -p /var/run/quagga \
+    ;mkdir -p /var/log/quagga \
     ## Fix "the END problem" in Quagga vtysh
     ;echo VTYSH_PAGER=more >> /etc/environment \
     ## Enable IPv6 and IPv4 forwarding
